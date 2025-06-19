@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invento - Marketplace Terdepan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="images" href="./assets/Ivento.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Langsung ke konten utama</a>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl overflow-hidden flex items-center justify-center bg-white">
+                        <img src="./assets/Ivento.png" alt="Ivento Logo" class="object-contain w-full h-full" />
+                    </div>
+                    <span class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">Invento</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#beranda" class="text-gray-700 hover:text-sky-500 transition-colors font-medium">Beranda</a>
+                    <a href="#produk" class="text-gray-700 hover:text-sky-500 transition-colors font-medium">Produk</a>
+                    <a href="#tentang" class="text-gray-700 hover:text-sky-500 transition-colors font-medium">Tentang</a>
+                </div>
+                
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                    <!-- Theme Toggle Button -->
+                    <label class="theme-switch" id="themeSwitch">
+                        <input type="checkbox" class="theme-switch__checkbox" id="themeSwitchCheckbox">
+                        <div class="theme-switch__container">
+                            <div class="theme-switch__clouds"></div>
+                            <div class="theme-switch__stars-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
+                                </svg>
+                            </div>
+                            <div class="theme-switch__circle-container">
+                                <div class="theme-switch__sun-moon-container">
+                                    <div class="theme-switch__moon">
+                                        <div class="theme-switch__spot"></div>
+                                        <div class="theme-switch__spot"></div>
+                                        <div class="theme-switch__spot"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </label>
+                    
+                    <a href="https://api.whatsapp.com/send/?phone=%2B62895386693566&text&type=phone_number&app_absent=0" class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 rounded-xl flex items-center justify-center text-white hover:bg-green-600 transition-colors" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp text-lg sm:text-xl"></i>
+                    </a>
+                    <a href="https://instagram.com/your-account" class="text-gray-600 hover:text-pink-500 transition-colors" aria-label="Instagram">
+                        <i class="fab fa-instagram text-lg sm:text-xl"></i>
+                    </a>
+                    <button class="lg:hidden text-gray-700" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                        <i class="fas fa-bars text-lg sm:text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="lg:hidden hidden" id="mobileMenu">
+                <div class="pt-4 pb-3 space-y-3 border-t border-gray-200 mt-4">
+                    <a href="#beranda" class="block text-gray-700 hover:text-sky-500 transition-colors font-medium py-2">Beranda</a>
+                    <a href="#produk" class="block text-gray-700 hover:text-sky-500 transition-colors font-medium py-2">Produk</a>
+                    <a href="#tentang" class="block text-gray-700 hover:text-sky-500 transition-colors font-medium py-2">Tentang</a>
+                    <a href="#kontak" class="block text-gray-700 hover:text-sky-500 transition-colors font-medium py-2">Kontak</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+    <!-- Hero Section -->
+        <section id="beranda" class="min-h-screen morphing-bg flex items-center justify-center relative overflow-hidden pt-16">
+            <div class="hero-slideshow absolute inset-0 z-0"></div>
+            <div class="hero-progress-bar absolute bottom-0 left-0 w-full h-1 z-10"></div>
+            <div class="hero-glass absolute inset-0 z-10"></div>
+            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+            <div class="container mx-auto px-4 sm:px-6 text-center relative z-20">
+                <div class="slide-in">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+                        Selamat Datang di<br>
+                        <span class="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">Invento</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl md:text-2xl text-blue-100 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
+                        Siap membantu anda untuk menemukan produk terbaik dari kami  
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+                        <a href="#produk" class="bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transition-all transform hover:scale-105 pulse-glow text-center block">Jelajahi Produk</a>
+                        <a href="#tentang" class="bg-transparent border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-sky-400 hover:text-blue-800 transition-all transform hover:scale-105 text-center block">Pelajari Lebih Lanjut</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Floating Elements -->
+            <div class="absolute top-20 left-4 sm:left-10 w-12 h-12 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full floating"></div>
+            <div class="absolute bottom-32 right-4 sm:right-16 w-10 h-10 sm:w-16 sm:h-16 bg-yellow-300 bg-opacity-30 rounded-full floating" style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/2 left-1/4 w-8 h-8 sm:w-12 sm:h-12 bg-orange-300 bg-opacity-40 rounded-full floating" style="animation-delay: 2s;"></div>
+        </section>
+
+    <!-- Features Section -->
+        <section class="py-12 sm:py-16 md:py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4">Mengapa Memilih Invento?</h2>
+                    <p class="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">Kami menyediakan pengalaman berbelanja yang tak tertandingi dengan kualitas terbaik</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    <div class="card-3d bg-gradient-to-br from-sky-50 to-blue-50 p-6 sm:p-8 rounded-3xl border border-sky-100">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-sky-400 to-blue-500 rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
+                            <i class="fas fa-shield-alt text-white text-lg sm:text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4">Keamanan Terjamin</h3>
+                        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">Mengamankan produk anda agar tetap terjaga dengan baik</p>
+                    </div>
+                    
+                    <div class="card-3d bg-gradient-to-br from-blue-50 to-indigo-50 p-6 sm:p-8 rounded-3xl border border-blue-100">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
+                            <i class="fas fa-shipping-fast text-white text-lg sm:text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4">Pelayanan Cepat</h3>
+                        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">Kami siap melayani anda dengan cepat untuk mendapatkan pengalaman yang baik</p>
+                </div>
+                
+                    <div class="card-3d bg-gradient-to-br from-indigo-50 to-purple-50 p-6 sm:p-8 rounded-3xl border border-indigo-100 md:col-span-2 lg:col-span-1">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
+                            <i class="fas fa-headset text-white text-lg sm:text-2xl"></i>
+                    </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4">Kualitas terbaik</h3>
+                        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">Menyiapkan berbagai produk dengan jenis-jenis terbaik dan berkualitas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+        <section id="produk" class="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4">Produk Unggulan</h2>
+                    <p class="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">Koleksi produk pilihan dengan kualitas terbaik dan harga terjangkau</p>
+            </div>
+            
+                <!-- Gelang Persahabatan Section -->
+                <div class="mb-16 sm:mb-20">
+                    <div class="text-center mb-8 sm:mb-12">
+                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-2">Gelang Persahabatan</h3>
+                        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300">Koleksi gelang persahabatan dengan desain unik dan berkualitas</p>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+                        <!-- Gelang 1 -->
+                        <div class="product-card-minimal flex flex-col items-center text-center p-4 bg-white/70 rounded-2xl backdrop-blur-md relative">
+                            <span class="product-icon">🧿</span>
+                            <div class="product-avatar mb-3">
+                                <img src="./assets/Gelang-1.jpg" alt="Gelang Rainbow" class="product-avatar-img">
+                            </div>
+                            <div class="flex-1 flex flex-col justify-center">
+                                <h3 class="font-bold text-lg mb-1 text-gray-800 dark:text-white">Gelang Rainbow</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">Warna-warni ceria</p>
+                        </div>
+                            <span class="product-badge">Rp 7.000</span>
+                        </div>
+                        <!-- Gelang 2 -->
+                        <div class="product-card-minimal flex flex-col items-center text-center p-4 bg-white/70 rounded-2xl backdrop-blur-md relative">
+                            <span class="product-icon">🧿</span>
+                            <div class="product-avatar mb-3">
+                                <img src="./assets/Gelang-2.jpg" alt="Gelang Ocean" class="product-avatar-img">
+                            </div>
+                            <div class="flex-1 flex flex-col justify-center">
+                                <h3 class="font-bold text-lg mb-1 text-gray-800 dark:text-white">Gelang Ocean</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">Nuansa laut tenang</p>
+                            </div>
+                            <span class="product-badge">Rp 7.000</span>
+                        </div>
+                        <!-- Gelang 3 -->
+                        <div class="product-card-minimal flex flex-col items-center text-center p-4 bg-white/70 rounded-2xl backdrop-blur-md relative">
+                            <span class="product-icon">🧿</span>
+                            <div class="product-avatar mb-3">
+                                <img src="./assets/Gelang-3.jpg" alt="Gelang Nature" class="product-avatar-img">
+                            </div>
+                            <div class="flex-1 flex flex-col justify-center">
+                                <h3 class="font-bold text-lg mb-1 text-gray-800 dark:text-white">Gelang Nature</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">Alami dan elegan</p>
+                            </div>
+                            <span class="product-badge">Rp 7.000</span>
+                        </div>
+                        <!-- Gelang 4 -->
+                        <div class="product-card-minimal flex flex-col items-center text-center p-4 bg-white/70 rounded-2xl backdrop-blur-md relative">
+                            <span class="product-icon">🧿</span>
+                            <div class="product-avatar mb-3">
+                                <img src="./assets/Gelang-4.jpg" alt="Gelang Galaxy" class="product-avatar-img">
+                            </div>
+                            <div class="flex-1 flex flex-col justify-center">
+                                <h3 class="font-bold text-lg mb-1 text-gray-800 dark:text-white">Gelang Galaxy</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">Misterius dan unik</p>
+                            </div>
+                            <span class="product-badge">Rp 7.000</span>
+                        </div>
+                        <!-- Gelang 5 -->
+                        <div class="product-card-minimal flex flex-col items-center text-center p-4 bg-white/70 rounded-2xl backdrop-blur-md relative">
+                            <span class="product-icon">🧿</span>
+                            <div class="product-avatar mb-3">
+                                <img src="./assets/Gelang-5.jpg" alt="Gelang Sunset" class="product-avatar-img">
+                            </div>
+                            <div class="flex-1 flex flex-col justify-center">
+                                <h3 class="font-bold text-lg mb-1 text-gray-800 dark:text-white">Gelang Sunset</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">Hangat dan romantis</p>
+                            </div>
+                            <span class="product-badge">Rp 7.000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gantungan Kunci Section -->
+                <div>
+                    <div class="text-center mb-8 sm:mb-12">
+                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-2">Gantungan Kunci</h3>
+                        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300">Koleksi gantungan kunci dengan desain menarik dan fungsional</p>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+                        <!-- Gantungan Kunci 1 -->
+                        <div class="product-card-minimal flex flex-col items-center text-center p-4 bg-white/70 rounded-2xl backdrop-blur-md relative">
+                            <span class="product-icon">🔑</span>
+                            <div class="product-avatar mb-3">
+                                <img src="./assets/Gantunga-1.jpg" alt="Gantungan Kunci Emoji" class="product-avatar-img">
+                            </div>
+                            <div class="flex-1 flex flex-col justify-center">
+                                <h3 class="font-bold text-lg mb-1 text-gray-800 dark:text-white">Emoji Cute</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">Lucu dan menggemaskan</p>
+                        </div>
+                            <span class="product-badge">Rp 5.000</span>
+                        </div>
+                        <!-- Gantungan Kunci 2 -->
+                        <div class="product-card-minimal flex flex-col items-center text-center p-4 bg-white/70 rounded-2xl backdrop-blur-md relative">
+                            <span class="product-icon">🔑</span>
+                            <div class="product-avatar mb-3">
+                                <img src="./assets/Gantunga-2.jpg" alt="Gantungan Kunci Crystal" class="product-avatar-img">
+                            </div>
+                            <div class="flex-1 flex flex-col justify-center">
+                                <h3 class="font-bold text-lg mb-1 text-gray-800 dark:text-white">Crystal Shine</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">Berkilau dan elegan</p>
+                            </div>
+                            <span class="product-badge">Rp 5.000</span>
+                        </div>
+                        <!-- Gantungan Kunci 3 -->
+                        <div class="product-card-minimal flex flex-col items-center text-center p-4 bg-white/70 rounded-2xl backdrop-blur-md relative">
+                            <span class="product-icon">🔑</span>
+                            <div class="product-avatar mb-3">
+                                <img src="./assets/Gantungan-3.jpg" alt="Gantungan Kunci Geometric" class="product-avatar-img">
+                            </div>
+                            <div class="flex-1 flex flex-col justify-center">
+                                <h3 class="font-bold text-lg mb-1 text-gray-800 dark:text-white">Geometric Art</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">Modern dan minimalis</p>
+                            </div>
+                            <span class="product-badge">Rp 5.000</span>
+                        </div>
+                        <!-- Gantungan Kunci 4 -->
+                        <div class="product-card-minimal flex flex-col items-center text-center p-4 bg-white/70 rounded-2xl backdrop-blur-md relative">
+                            <span class="product-icon">🔑</span>
+                            <div class="product-avatar mb-3">
+                                <img src="./assets/Gantungan-4.jpg" alt="Gantungan Kunci Floral" class="product-avatar-img">
+                            </div>
+                            <div class="flex-1 flex flex-col justify-center">
+                                <h3 class="font-bold text-lg mb-1 text-gray-800 dark:text-white">Floral Dream</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">Romantis dan feminin</p>
+                            </div>
+                            <span class="product-badge">Rp 5.000</span>
+                        </div>
+                        <!-- Gantungan Kunci 5 -->
+                        <div class="product-card-minimal flex flex-col items-center text-center p-4 bg-white/70 rounded-2xl backdrop-blur-md relative">
+                            <span class="product-icon">🔑</span>
+                            <div class="product-avatar mb-3">
+                                <img src="./assets/Gantungan-5.jpg" alt="Gantungan Kunci Wooden" class="product-avatar-img">
+                            </div>
+                            <div class="flex-1 flex flex-col justify-center">
+                                <h3 class="font-bold text-lg mb-1 text-gray-800 dark:text-white">Wooden Craft</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">Alami dan handcrafted</p>
+                            </div>
+                            <span class="product-badge">Rp 5.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="tentang" class="py-12 sm:py-16 md:py-20 gradient-bg text-white">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">Tentang Invento</h2>
+                    <p class="text-base sm:text-lg md:text-xl text-blue-100 max-w-3xl mx-auto px-4">Kami adalah marketplace terdepan yang berkomitmen menghadirkan pengalaman berbelanja terbaik untuk anda</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-16">
+                    <div class="text-center">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">20</div>
+                        <p class="text-blue-100 text-sm sm:text-base">Pengguna Aktif</p>
+                            </div>
+                    <div class="text-center">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">20</div>
+                        <p class="text-blue-100 text-sm sm:text-base">Produk Tersedia</p>
+                        </div>
+                    <div class="text-center">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">5</div>
+                        <p class="text-blue-100 text-sm sm:text-base">Jenis Produk</p>
+                        </div>
+                    <div class="text-center">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">99%</div>
+                        <p class="text-blue-100 text-sm sm:text-base">Kepuasan Pelanggan</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Visi Kami</h3>
+                        <p class="text-blue-100 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
+                            Menjadi marketplace terdepan yang menghubungkan jutaan pembeli dan penjual di seluruh SMKN 64 Jakarta, 
+                            dengan fokus pada kualitas, keamanan, dan kepuasan pelanggan.
+                        </p>
+                        <h3 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Misi Kami</h3>
+                        <p class="text-blue-100 leading-relaxed text-sm sm:text-base">
+                            Memberikan kualitas produk yang aman dan terpercaya untuk anda.
+                        </p>
+                            </div>
+                    <div class="glass-effect p-6 sm:p-8 rounded-3xl">
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Nilai-Nilai Kami</h3>
+                        <ul class="space-y-3 sm:space-y-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-400 mr-3 text-sm sm:text-base"></i>
+                                <span class="text-sm sm:text-base">Integritas dan Transparansi</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-400 mr-3 text-sm sm:text-base"></i>
+                                <span class="text-sm sm:text-base">Inovasi Berkelanjutan</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-400 mr-3 text-sm sm:text-base"></i>
+                                <span class="text-sm sm:text-base">Kepuasan Pelanggan</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-400 mr-3 text-sm sm:text-base"></i>
+                                <span class="text-sm sm:text-base">Kolaborasi dan Sinergi</span>
+                            </li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Testimoni Section -->
+        <section id="testimoni" class="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-gray-50">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4">Testimoni Pelanggan</h2>
+                    <p class="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">Apa kata mereka tentang Invento?</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                    <!-- Testimoni 1 -->
+                    <div class="glass-effect p-6 rounded-2xl flex flex-col items-center text-center shadow-lg border border-gray-100 dark:border-gray-700 testimoni-card">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Testimoni 1" class="w-16 h-16 rounded-full mb-4 testimoni-avatar object-cover">
+                        <p class="text-gray-700 dark:text-gray-200 mb-3">"Pelayanan sangat ramah, produk sampai dengan cepat dan kualitasnya terbaik!"</p>
+                        <div class="flex items-center justify-center mb-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star-half-alt text-yellow-400"></i>
+                        </div>
+                        <span class="font-semibold text-gray-800 dark:text-white">Nabila, Jakarta</span>
+                    </div>
+                    <!-- Testimoni 2 -->
+                    <div class="glass-effect p-6 rounded-2xl flex flex-col items-center text-center shadow-lg border border-gray-100 dark:border-gray-700 testimoni-card">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Testimoni 2" class="w-16 h-16 rounded-full mb-4 testimoni-avatar object-cover">
+                        <p class="text-gray-700 dark:text-gray-200 mb-3">"Gelang persahabatannya lucu banget, cocok buat hadiah! Pengiriman juga cepat."</p>
+                        <div class="flex items-center justify-center mb-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <span class="font-semibold text-gray-800 dark:text-white">Wahyu, Jakarta</span>
+                    </div>
+                    <!-- Testimoni 3 -->
+                    <div class="glass-effect p-6 rounded-2xl flex flex-col items-center text-center shadow-lg border border-gray-100 dark:border-gray-700 testimoni-card">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Testimoni 3" class="w-16 h-16 rounded-full mb-4 testimoni-avatar object-cover">
+                        <p class="text-gray-700 dark:text-gray-200 mb-3">"Customer service sangat membantu, proses refund juga mudah dan cepat."</p>
+                        <div class="flex items-center justify-center mb-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <span class="font-semibold text-gray-800 dark:text-white">Afifah, Jakarta</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-accordion py-12 sm:py-16 md:py-20 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4">FAQ</h2>
+                    <p class="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">Pertanyaan yang sering diajukan seputar Invento</p>
+                </div>
+                <div class="max-w-3xl mx-auto">
+                    <div class="space-y-4">
+                        <!-- FAQ 1 -->
+                        <div class="faq-item bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700 transition-all mb-4">
+                            <button class="faq-question font-semibold text-gray-800 dark:text-white cursor-pointer flex items-center justify-between w-full text-left">
+                                Bagaimana cara memesan produk di Invento?
+                                <span class="ml-2 transition-transform"><i class="fas fa-chevron-right"></i></span>
+                            </button>
+                            <div class="faq-content text-gray-600 dark:text-gray-300 mt-2">
+                                Silahkan memesan melewati wa kami yang disediakan di <a href="https://api.whatsapp.com/send/?phone=%2B62895386693566&text&type=phone_number&app_absent=0">+62895-3866-93566</a>
+                            </div>
+                        </div>
+                        <!-- FAQ 2 -->
+                        <div class="faq-item bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700 transition-all mb-4">
+                            <button class="faq-question font-semibold text-gray-800 dark:text-white cursor-pointer flex items-center justify-between w-full text-left">
+                                Apakah produk bisa dikirim ke seluruh Indonesia?
+                                <span class="ml-2 transition-transform"><i class="fas fa-chevron-right"></i></span>
+                            </button>
+                            <div class="faq-content text-gray-600 dark:text-gray-300 mt-2">
+                                Belum, untuk saat ini kami hanya masih melayani pengiriman di kota jakarta saja.
+                            </div>
+                        </div>
+                        <!-- FAQ 3 -->
+                        <div class="faq-item bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700 transition-all mb-4">
+                            <button class="faq-question font-semibold text-gray-800 dark:text-white cursor-pointer flex items-center justify-between w-full text-left">
+                                Bagaimana jika produk tidak sesuai atau rusak?
+                                <span class="ml-2 transition-transform"><i class="fas fa-chevron-right"></i></span>
+                            </button>
+                            <div class="faq-content text-gray-600 dark:text-gray-300 mt-2">
+                                Silakan hubungi customer service kami, proses retur/refund akan dibantu dengan mudah dan cepat.
+                            </div>
+                        </div>
+                        <!-- FAQ 4 -->
+                        <div class="faq-item bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700 transition-all mb-4">
+                            <button class="faq-question font-semibold text-gray-800 dark:text-white cursor-pointer flex items-center justify-between w-full text-left">
+                                Bagaimana cara menghubungi customer service?
+                                <span class="ml-2 transition-transform"><i class="fas fa-chevron-right"></i></span>
+                            </button>
+                            <div class="faq-content text-gray-600 dark:text-gray-300 mt-2">
+                                Anda dapat menghubungi kami melalui WhatsApp.
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+        <section class="py-12 sm:py-16 gradient-bg">
+            <div class="container mx-auto px-4 sm:px-6 text-center">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">Berlangganan Newsletter</h2>
+                <p class="text-base sm:text-lg md:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">Dapatkan informasi terbaru tentang produk, promo, dan tips berbelanja dari Invento</p>
+                
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md mx-auto px-4">
+                    <input type="email" placeholder="Masukkan email Anda" class="flex-1 px-4 sm:px-6 py-2 sm:py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-white text-sm sm:text-base">
+                    <button type="button" class="bg-white text-blue-600 px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 text-sm sm:text-base">
+                        Berlangganan
+                    </button>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 sm:py-16" id="footer">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4 sm:mb-6">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl overflow-hidden flex items-center justify-center bg-white">
+                            <img src="./assets/Ivento.png" alt="Ivento Logo" class="object-contain w-full h-full" />
+                        </div>
+                        <span class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">Invento</span>
+                    </div>
+                    <p class="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">
+                        Marketplace terdepan yang menghubungkan Anda dengan produk-produk berkualitas tinggi dari seluruh Indonesia.
+                    </p>
+                    <div class="flex space-x-3 sm:space-x-4">
+                        <a href="https://api.whatsapp.com/send/?phone=%2B62895386693566&text&type=phone_number&app_absent=0" class="text-gray-400 hover:text-green-400 transition-colors" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp text-lg sm:text-2xl"></i>
+                        </a>
+                        <a href="https://instagram.com/your-account" class="text-gray-400 hover:text-pink-400 transition-colors" aria-label="Instagram">
+                            <i class="fab fa-instagram text-lg sm:text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Produk</h3>
+                    <ul class="space-y-2 sm:space-y-3">
+                        <li><a href="#produk" class="text-gray-400 hover:text-white transition-colors text-sm sm:text-base scroll-smooth">Gelang Persahabatan</a></li>
+                        <li><a href="#produk" class="text-gray-400 hover:text-white transition-colors text-sm sm:text-base scroll-smooth">Gantungan Kunci</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Perusahaan</h3>
+                    <ul class="space-y-2 sm:space-y-3">
+                        <li><a href="#tentang" class="text-gray-400 hover:text-white transition-colors text-sm sm:text-base">Tentang Kami</a></li>
+                        <li><a href="Lamaran.html" class="text-gray-400 hover:text-white transition-colors text-sm sm:text-base">Lowongan Kerja</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Dukungan</h3>
+                    <ul class="space-y-2 sm:space-y-3">
+                        <li><a href="https://api.whatsapp.com/send/?phone=%2B62895386693566&text&type=phone_number&app_absent=0" class="text-gray-400 hover:text-white transition-colors text-sm sm:text-base" target="_blank" rel="noopener">Hubungi Kami</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition-colors text-sm sm:text-base scroll-smooth">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-gray-400 text-center sm:text-left text-sm sm:text-base">
+                    © 2025 Invento. Semua hak dilindungi undang-undang.
+                </p>
+                <div class="flex items-center space-x-4 sm:space-x-6 mt-4 sm:mt-0">
+                    <span class="text-gray-400 text-xs sm:text-sm">Ikuti Kami:</span>
+                    <a href="https://api.whatsapp.com/send/?phone=%2B62895386693566&text&type=phone_number&app_absent=0" class="text-gray-400 hover:text-green-400 transition-colors" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp text-lg sm:text-xl"></i>
+                    </a>
+                    <a href="https://instagram.com/your-account" class="text-gray-400 hover:text-pink-400 transition-colors" aria-label="Instagram">
+                        <i class="fab fa-instagram text-lg sm:text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
